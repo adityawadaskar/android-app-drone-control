@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:stream="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/mapConstraint"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        tools:context=".WaypointActivity">
+
+        <fragment xmlns:map="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            map:layout_constraintTop_toTopOf="parent"
+            map:layout_constraintBottom_toTopOf="@+id/altitudeText"
+            tools:context=".WaypointActivity" />
+
+        <TextView
+            android:id="@+id/altitudeText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginTop="15dp"
+            android:ems="14"
+            android:text="Altitude Control"
+            app:layout_constrainedHeight="true"
+            app:layout_constraintBottom_toTopOf="@+id/altitudeBar"
+            app:layout_constraintHeight_min="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/map" />
+
+        <SeekBar
+            android:id="@+id/altitudeBar"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:indeterminate="false"
+            android:max="5"
+            android:progress="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/altitudeText" />
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/cameraFeedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@android:drawable/ic_menu_camera"
+            app:layout_constraintEnd_toEndOf="@id/map"
+            app:layout_constraintTop_toTopOf="@id/map" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/returnToMenuButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@android:drawable/ic_menu_revert"
+            app:layout_constraintStart_toStartOf="@id/map"
+            app:layout_constraintTop_toTopOf="@id/map" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mapConstraint"
+            android:layout_marginBottom="15dp"
+            android:baselineAligned="false">
+
+            <Button
+                android:id="@+id/startButton"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="Start Mission" />
+
+            <Button
+                android:id="@+id/landButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Land" />
+
+            <Button
+                android:id="@+id/returnButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Reset" />
+
+
+        </LinearLayout>
+
+</LinearLayout>
+
